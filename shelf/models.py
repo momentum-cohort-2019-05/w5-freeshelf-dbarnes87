@@ -18,6 +18,9 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural ='categories'
 
+    def get_absolute_url(self):
+        return reverse('category-detail', args=[str(self.id)])
+
 
 class Book(models.Model):
     

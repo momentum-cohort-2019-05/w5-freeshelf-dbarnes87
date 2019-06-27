@@ -17,6 +17,7 @@
     text-align: center;
     margin-bottom: 30px;
     font-family: sans-serif;
+    background-color: darkslategray;
 
 }
 
@@ -33,9 +34,6 @@
 
 }
 
-.html {
-    background-color: rgb(224, 222, 222)
-}
 
 .shelf {
     border-radius: 30px;
