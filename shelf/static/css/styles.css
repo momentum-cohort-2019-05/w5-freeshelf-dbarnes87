@@ -1,0 +1,44 @@
+.topbar-nav {
+    /* margin-top: 20px;
+    padding: 0; */
+    list-style: none;
+    margin-right: 30px
+
+}
+
+.freeshelf {
+    font-size: 50px;
+}
+
+.title-bar {
+    /* display: flex;
+    flex-wrap: wrap; */
+    list-style: none;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: sans-serif;
+
+}
+
+.category-nav {
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: sans-serif;
+
+}
+
+.body {
+    font-family: sans-serif;
+    margin: 20px;
+
+}
+
+.html {
+    background-color: rgb(224, 222, 222)
+}
+
+.shelf {
+    border-radius: 30px;
+    width: 50%;
+    height: 250px;
+}

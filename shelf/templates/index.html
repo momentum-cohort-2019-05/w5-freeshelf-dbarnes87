@@ -1,0 +1,17 @@
+{% extends "base-generic.html" %}
+
+{% block content %}
+  {% if book_list %}    
+    {% for book in book_list %}
+      
+        <div class="books" style='margin-top: 40px'><strong><a href="{{ book.url_address }}">{{ book.title }}</a> ({{book.author}})</strong></div>
+        <div><p>{{ book.description }}</p></div>
+        <div>added&nbsp;{{ book.add_date }}&nbsp;&nbsp;&nbsp;<strong>|&nbsp;&nbsp;&nbsp;</strong>Category:&nbsp;<a href='{{ book.category.all|join:"," }}'>{{ book.category.all|join:"," }}</a></div>
+
+    
+    {% endfor %}
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}       
+{% endblock %}
+

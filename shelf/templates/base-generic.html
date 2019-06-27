@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class='html' lang="en">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="body">
+<div class="title-bar">
+{% block title %}<title>Freeshelf</title>{% endblock %}
+<h1 class='freeshelf'>Freeshelf</h1>
+<img class='shelf' src='https://cdn.pixabay.com/photo/2012/11/23/06/11/book-67049_1280.jpg'>
+      {% block topnav %}
+        <ul class="topbar-nav">
+          <li><a href="{% url 'index' %}">Home</a></li>
+     {% endblock %}
+    </div>
+      <div class="category-nav">
+        Books by category:&nbsp;&nbsp;
+        {% if category_list %}
+        {% for category in category_list %}
+          |&nbsp;&nbsp;<a href='{{ category.name }}'>{{ category.name }}</a>&nbsp;&nbsp;|
+        {% endfor %}
+      {% else %}
+          <p>There are no books in this categorty</p>
+      {% endif %}
+      </div>
+      <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
+    </div>
+  </div>
+</body>
+</html>

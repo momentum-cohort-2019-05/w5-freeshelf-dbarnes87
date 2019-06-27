@@ -1,5 +1,11 @@
 from django.db import models
 from django.urls import reverse
+# from django.contrib.aut.models import User
+
+# Safer, but more complex method
+# from django.contrib.auth import get_user_model
+# User = get_user_model()
+
 from datetime import date
 
 class Category(models.Model):
@@ -36,8 +42,12 @@ class Book(models.Model):
     
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
-        return reverse('book-detail', args=[str(self.id)])
+        return self.url_address
 
+    def display_category(self):
+        return ', '.join(category.name for category in self.category.all()[:3])
+    
+    display_category.short_description = 'Category'
 
 
 
