@@ -10,12 +10,14 @@
 </head>
 <body class="body">
 <div class="title-bar">
-{% block title %}<title>Freeshelf</title>{% endblock %}
+<!-- {% block title %}<title>Freeshelf</title>{% endblock %} -->
 <h1 class='freeshelf'>Freeshelf</h1>
 <img class='shelf' src='https://cdn.pixabay.com/photo/2012/11/23/06/11/book-67049_1280.jpg'>
       {% block topnav %}
         <ul class="topbar-nav">
           <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'auth_login' %}">Login</a></a></li>
+          <li><a href="{% url 'auth_logout' %}">Logout</a></a></li>
      {% endblock %}
     </div>
       <div class="category-nav">

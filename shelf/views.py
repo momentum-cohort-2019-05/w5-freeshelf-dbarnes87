@@ -5,6 +5,8 @@ from shelf.models import Category, Book
 from django.views import generic
 
 
+
+
 def index(request):
     """View function for home page of site."""
 
@@ -30,3 +32,5 @@ def index(request):
 
 class CategoryDetailView(generic.DetailView):
     model = Category
+
+

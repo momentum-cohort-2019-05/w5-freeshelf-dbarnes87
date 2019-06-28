@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url('accounts/', include('registration.backends.default.urls')),
 ]
 
 # Use include() to add paths from the catalog application 
@@ -26,6 +29,8 @@ from django.urls import path
 
 urlpatterns += [
     path('shelf/', include('shelf.urls')),
+    # path('accounts/', include('registration.backends.default.urls')),
+
 ]
 
 #Add URL maps to redirect the base URL to our application
@@ -40,8 +45,8 @@ from django.conf.urls.static import static
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-urlpatterns += [
-    path(r'^accounts/', include('registration.backends.default.urls')),
-]
+#Add Django site authentication urls (for login, logout, password management)
+
+
 
 
