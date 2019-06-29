@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-# from django.contrib.aut.models import User
+from django.contrib.auth.models import User
 
 # Safer, but more complex method
 # from django.contrib.auth import get_user_model
@@ -51,6 +51,25 @@ class Book(models.Model):
         return ', '.join(category.name for category in self.category.all()[:3])
     
     display_category.short_description = 'Category'
+
+class Favorite(models.Model):
+
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, null=True, blank=True)
+
+    # def get_absolute_url(self):
+    #     return render('favorite-added', args=[str(self.id)])
+
+    # def __str__(self):
+    #     return f"{self.user}|{self.favorite_book}"
+
+    # class Meta:
+    #     unique_together = [ 'user', 'favorite_book' ]
+     
+
+
+
 
 
 

@@ -1,10 +1,8 @@
 from django.shortcuts import render
-
-from shelf.models import Category, Book
-
+from shelf.models import Category, Book, Favorite
 from django.views import generic
-
-
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 
 def index(request):
@@ -32,5 +30,39 @@ def index(request):
 
 class CategoryDetailView(generic.DetailView):
     model = Category
+
+@login_required
+def user_favorites(request):
+    favorites = Favorite.objects.filter(owner=request.user)
+
+    favorites_list = []
+
+    for favorite in favorites:
+        favorites_list.append(favorite.book)
+
+    context = {
+        'favorites': favorites,
+        'favorites_list': favorites_list,
+    }
+
+    return render(request, 'shelf/favorites.html', context)
+
+@login_required
+def add_to_favorites(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+
+    new_favorite, created = Favorite.objects.get_or_create(book=book, owner=request.user)
+    if not created:
+        new_favorite.delete()
+    
+    context = {
+        'book': book,
+        'new_favorite': new_favorite,
+        'created': created,
+    }
+
+    return render(request, 'shelf/favorite_added.html', context)
+
+
 
 
