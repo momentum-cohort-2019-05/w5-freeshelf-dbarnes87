@@ -7,7 +7,7 @@
       
         <div class="books" style='margin-top: 40px'><strong><a href="{{ book.url_address }}">{{ book.title }}</a> ({{book.author}})</strong></div>
         <div><p>{{ book.description }}</p></div>
-        <div>added&nbsp;{{ book.add_date }}&nbsp;&nbsp;&nbsp;<strong>|&nbsp;&nbsp;&nbsp;</strong>Category:&nbsp;<a href='{{ book.category.all|join:"," }}'>{{ book.category.all|join:"," }}</a></div><div>&nbsp;&nbsp;<a href="{% url 'favorites' book.pk %}">Add to favorites</a></div>
+        <div>added&nbsp;{{ book.add_date }}&nbsp;&nbsp;&nbsp;<strong>|&nbsp;&nbsp;&nbsp;</strong>Category:&nbsp;<a href='{{ book.category.all|join:"," }}'>{{ book.category.all|join:"," }}</a></div><div>&nbsp;&nbsp;<a class='favorites' href="{% url 'favorites' book.pk %}">Add to favorites</a></div>
 
     
         {% endfor %}
